@@ -1,0 +1,255 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-size: 16px;
+}
+
+.container {
+    height: 100vh;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.contents.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.main-contents {
+    position:relative;
+    min-width: 450px;
+    height: 100%;
+    background-size: cover !important;
+    background: url(/images/back-img.svg) no-repeat center;
+}
+
+.main-title {
+    margin-top:163px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-title h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.main-title h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.main-logo {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 130px
+}
+
+.main-logo img {
+    width: 130px;
+    height: 26px;
+}
+
+.main-btn {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 0px;
+    padding: 0 16px 36px 16px;
+}
+
+.main-btn button {
+    width:343px;
+    height:50px;
+    border-radius: 10px;
+    background-color: #004424;
+    color: #fff;
+    font-size: 17px;
+    transition: background 0.3s;
+}
+
+.main-btn button:hover {
+    background: #fff;
+    border-color: #1C7349;
+    color: #1C7349;
+    font-weight: bold;
+}
+
+.main-btn button.active {
+    background: #fff;
+    border-color: #1C7349;
+    color: #1C7349;
+    font-weight: bold;
+}
+
+.main-btn button.no-hover:hover {
+    background-color: #004424;
+    color: #fff;
+}
+
+.name-contents {
+    position:relative;
+    min-width: 450px;
+    height: 100%;
+    background-size: cover !important;
+    background-color: #1C7349;
+}
+
+.name-title {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 225px;
+    height:149px;
+    margin: 157px auto;
+}
+
+.name-title label {
+    color:#fff;
+    font-size:24px;
+    font-weight: bold;
+}
+
+.name-title input[type="text"] {
+    margin-top: 34px;
+    padding-bottom: 8px;
+    width: 100%;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    background-color: transparent; 
+    font-size: 16px;
+    text-align: center;
+}
+
+.name-title input::placeholder {
+    color: #fff;
+}
+
+.name-count {
+    color: #fff;
+    margin-top: 3px;
+    font-size: 14px;
+}
+
+/* 로딩 페이지 스타일 */
+.loading-contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 450px;
+    height: 100%;
+    background-size: cover !important;
+    background: url('/images/back_mo.svg') no-repeat center;
+}
+
+.loading-card {
+    position: relative;
+    /* align-items: center; */
+    width: 264px;
+    height: 416px;
+    border-radius: 20px;
+    /* aspect-ratio: 2/3; */
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loading-card h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: #333;
+    margin-top: 45px;
+    margin-bottom: 43px;
+}
+
+.loading-icon {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0px 87px 0px 87px;
+}
+
+.loading-icon img {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.loading-icon img.active {
+    opacity: 1;
+}
+
+.loading-text {
+    margin-top:125px;
+    font-size: 1rem;
+}
+
+
+.loading-bar {
+    display: flex;
+    justify-self: center;
+    margin-top:33px;
+    width: 160px;
+    height: 8px;
+    background-color: #898989;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loading-progress {
+    height: 100%;
+    background-color: #1C7349;
+    width: 0;
+    animation: loadingAnimation 4s infinite;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.card-contents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 450px;
+    height: 100%;
+    background-size: cover !important;
+    background: url('/images/back_mo.svg') no-repeat center;
+}
