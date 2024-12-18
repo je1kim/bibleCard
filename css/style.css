@@ -173,11 +173,9 @@ h1, h2, h3, h4 {
 
 .loading-card {
     position: relative;
-    /* align-items: center; */
     width: 264px;
     height: 416px;
     border-radius: 20px;
-    /* aspect-ratio: 2/3; */
     text-align: center;
     background: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -252,4 +250,51 @@ h1, h2, h3, h4 {
     height: 100%;
     background-size: cover !important;
     background: url('/images/back_mo.svg') no-repeat center;
+}
+
+.card-area {
+    position: relative;
+    width: 264px;
+    height: 416px;
+    border-radius: 20px;
+    text-align: center;
+    background: #01539D;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-area img {
+    width: 28px;
+    height: 37px;
+    margin-top: 45px;
+}
+
+.card-area span {
+    color: #fff;
+}
+
+.sub-btn {
+    position: fixed;
+    display: flex;
+    justify-content:space-between;
+    /* left: 50%;
+    transform: translate(-50%); */
+    bottom: 0px;
+    padding: 0 16px 36px 16px;
+}
+
+.sub-btn button {
+    width: 165px;
+    height: 50px;
+    border-radius: 10px;
+    margin-left: 13px;
+    background-color: #004424;
+    color: #fff;
+    font-size: 17px;
+}
+
+.sub-btn button:hover{
+    background: #fff;
+    border-color: #1C7349;
+    color: #1C7349;
+    font-weight: bold;
 }
