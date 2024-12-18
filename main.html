@@ -55,12 +55,12 @@
             <div id="contents-4" class="contents">
                 <div class="card-contents">
                     <div class="card-area">
-                        <img src="/images/loading_icon1.svg" alt="log"/>
+                        <!-- <img src="/images/loading_icon1.svg" alt="log"/>
                         <div>
                         <span>2025</span>
-                        <br>
+                        <br> -->
                         <span id="cardName"></span>
-                        </div>
+                        <!-- </div> -->
                     </div>
                     <div id="btn-2" class="sub-btn">
                         <button id="sub-btn">말씀 다시 뽑기</button>
@@ -86,6 +86,19 @@
         const loadingText = document.getElementById("loadingTextName");
         const cardName = document.getElementById("cardName");
 
+        const logindImgs = document.querySelectorAll('.loading-icon img');
+        let currentIndex = 0;
+        const totalImages = logindImgs.length;
+
+        function changeImage() {
+            logindImgs[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % totalImages;
+            console.log(currentIndex);
+            logindImgs[currentIndex].classList.add('active');
+        }
+
+        const loadingBar = document.querySelector('.loading-progress');
+
         btn_1.addEventListener('click', () => {
             contents_1.classList.remove('active');
             contents_2.classList.add('active');
@@ -102,6 +115,8 @@
                 alert("이름을 입력해주세요.")
                 
             } else {
+                let changeImgLog = setInterval(changeImage, 1000);
+
                 contents_2.classList.remove('active');
                 contents_3.classList.add('active');
 
@@ -112,6 +127,8 @@
                 setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
                     contents_3.classList.remove('active');
                     contents_4.classList.add('active');
+
+                    clearInterval(changeImgLog);
                 }, 3000); 
 
             }
@@ -137,21 +154,6 @@
 
             nameCount.textContent = `${realLength} / ${maxLength}`;
         })
-
-    const logindImgs = document.querySelectorAll('.loading-icon img');
-    let currentIndex = 0;
-    const totalImages = logindImgs.length;
-    // const loadingBar = document.querySelector('.loading-bar');
-
-    function changeImage() {
-        logindImgs[currentIndex].classList.remove('active');
-        currentIndex = (currentIndex + 1) % totalImages;
-        logindImgs[currentIndex].classList.add('active');
-    }
-
-    const loadingBar = document.querySelector('.loading-progress');
-
-    setInterval(changeImage, 3000);
 
     </script>
 </html>

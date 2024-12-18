@@ -230,7 +230,7 @@ h1, h2, h3, h4 {
     height: 100%;
     background-color: #1C7349;
     width: 0;
-    animation: loadingAnimation 4s infinite;
+    animation: loadingAnimation 2.3s infinite;
 }
 
 @keyframes loadingAnimation {
