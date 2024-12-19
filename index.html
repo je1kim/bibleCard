@@ -124,11 +124,11 @@
                 loadingText.textContent = `${name}에게`;
                 cardName.textContent = `${name}에게 주신 말씀`;
 
-                // setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
-                    // contents_3.classList.remove('active');
-                    // contents_4.classList.add('active');
-                    // clearInterval(changeImgLog);
-                // }, 3000); 
+                setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
+                    contents_3.classList.remove('active');
+                    contents_4.classList.add('active');
+                    clearInterval(changeImgLog);
+                }, 3000); 
 
             }
         })
