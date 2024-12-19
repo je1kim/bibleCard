@@ -177,7 +177,7 @@ h1, h2, h3, h4 {
     height: 416px;
     border-radius: 20px;
     text-align: center;
-    background: #fff;
+    background:rgba(255, 255, 255, 0.7);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -210,15 +210,17 @@ h1, h2, h3, h4 {
 }
 
 .loading-text {
-    margin-top:125px;
+    position: absolute;
+    bottom:27%;
+    margin-left: 15%;
+    text-align: center;
     font-size: 1rem;
 }
 
-
 .loading-bar {
-    display: flex;
-    justify-self: center;
-    margin-top:33px;
+    position: absolute;
+    bottom:15%;
+    margin-left: 20%;
     width: 160px;
     height: 8px;
     background-color: #898989;
