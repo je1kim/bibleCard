@@ -253,7 +253,7 @@ h1, h2, h3, h4 {
     background-size: cover !important;
     background: url('../images/back_mo.svg') no-repeat center;
 }
-
+/* 
 .card-area {
     position: relative;
     width: 264px;
@@ -262,13 +262,13 @@ h1, h2, h3, h4 {
     text-align: center;
     background: #01539D;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+} */
 
-.card-area img {
+/* .card-area img {
     width: 28px;
     height: 37px;
     margin-top: 45px;
-}
+} */
 
 .card-area span {
     color: #fff;
@@ -300,3 +300,54 @@ h1, h2, h3, h4 {
     color: #1C7349;
     font-weight: bold;
 }
+
+.card-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 264px;
+    height: 416px;
+    aspect-ratio: 2/3;
+    border-radius: 3vw;
+    overflow: hidden;
+    margin-bottom: 3vh;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.card-title {
+    position: absolute;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+.card-title p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 138px;
+}
+
+
+.card-bible {
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 230px;
+    height: 63px;
+    /* top: 0; */
+    /* margin: 50% 23px auto; */
+    font-size: 14px;
+}
+

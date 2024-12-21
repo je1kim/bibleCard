@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
         <title>부평감리교회 청년부 말씀뽑기</title>
         <link rel="stylesheet" href="./css/style.css"/>
+        <script src="./js/script.js"></script>
     </head>
     <body>
         <div class="container">
@@ -54,14 +55,19 @@
 
             <div id="contents-4" class="contents">
                 <div class="card-contents">
-                    <div class="card-area">
-                        <!-- <img src="/images/loading_icon1.svg" alt="log"/>
-                        <div>
-                        <span>2025</span>
-                        <br> -->
-                        <span id="cardName"></span>
-                        <!-- </div> -->
+                    <div class="card-img" id="cardImg">
+                        <img id="randomImage" src="" alt="랜덤 성경 구절">
+                        <div class="card-title">
+                            <div>
+                                <p>2025</p>
+                                <p id="cardName"></p>
+                            </div>
+                            <div class="card-bible" id="cardBible"></div>
+                        </div>
+                        
                     </div>
+                    
+                    
                     <div id="btn-2" class="sub-btn">
                         <button id="sub-btn">말씀 다시 뽑기</button>
                         <button id="sub-btn">이미지 저장</button>
@@ -71,6 +77,7 @@
         </div>
     </body>
     <script>
+
         const btn_1 = document.getElementById('btn-1');
         const btn_2 = document.getElementById('btn-2');
         const contents_1 = document.getElementById('contents-1');
@@ -86,9 +93,13 @@
         const loadingText = document.getElementById("loadingTextName");
         const cardName = document.getElementById("cardName");
 
+        const cardBible = document.getElementById("cardBible");
+
         const logindImgs = document.querySelectorAll('.loading-icon img');
         let currentIndex = 0;
         const totalImages = logindImgs.length;
+
+        const cardImg = document.getElementById("cardImg");
 
         function changeImage() {
             logindImgs[currentIndex].classList.remove('active');
@@ -122,7 +133,37 @@
 
                 const name = nameInput.value;
                 loadingText.textContent = `${name}에게`;
-                cardName.textContent = `${name}에게 주신 말씀`;
+                
+                getSmallCard().then((result) => {
+                    console.log(result)
+                    document.getElementById('randomImage').src = result.bibleImg
+                    cardName.textContent = `${name}에게 주신 말씀`;
+                    let fontType = getBackgroundType(result.bibleImg)
+                    let fontColor = fontType.isBlackText ? "#000" : "#fff";
+                    console.log(fontColor);
+                    console.log(fontType);
+
+                    cardImg.style.color = fontColor;
+                                        
+                    bibleContents = result.bible.content.replaceAll("/", "<br>");
+                    bibleLoc = result.bible.location;
+
+                    cardBible.innerHTML = bibleContents;
+                    
+
+                    console.log(bibleContents);
+                    console.log(bibleLoc);
+
+
+                    if (fontType.isType2Layout) {
+                        console.log("로고 O");
+
+                    } else {
+                        console.log("로고 X");
+                    }
+
+                });
+                
 
                 setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
                     contents_3.classList.remove('active');
