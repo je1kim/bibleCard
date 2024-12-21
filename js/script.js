@@ -183,7 +183,7 @@ function changeImage() {
 
 async function getBibleVerses() {
     try {
-        const response = await fetch('../data/bible.txt');
+        const response = await fetch('/data/bible.txt');
         const text = await response.text();
         
         // 정규식을 사용하여 큰따옴표로 둘러싸인 부분을 추출
