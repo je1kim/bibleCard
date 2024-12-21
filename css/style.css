@@ -322,10 +322,13 @@ h1, h2, h3, h4 {
 .download-img {
     position: relative;
     display: flex;
+    justify-content: center;
     overflow: hidden;
 }
 
 .download-img img{
+    display: flex;
+    justify-content: center;
     width: 450px;
 }
 

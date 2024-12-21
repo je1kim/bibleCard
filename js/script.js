@@ -105,7 +105,7 @@ btn_2.addEventListener('click', () => {
         loadingText.textContent = `${name}에게`; 
 
         setBibleCard(name);
-        let changeImgLog = setInterval(changeImage, 500);
+        let changeImgLog = setInterval(changeImage, 550);
 
         contents_2.classList.remove('active');
         contents_3.classList.add('active');
@@ -130,7 +130,6 @@ reBtn.addEventListener('click', () => {
     let changeImgLog = setInterval(changeImage, 550);
 
     setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
-        
         contents_3.classList.remove('active');
         contents_4.classList.add('active');
         clearInterval(changeImgLog);
