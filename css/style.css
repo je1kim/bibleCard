@@ -330,7 +330,8 @@ h1, h2, h3, h4 {
 
 .download-img img{
     display: flex;
-    justify-content: center;    
+    justify-content: center;
+    /* width: 375px; */
 }
 
 .download-card-text {
