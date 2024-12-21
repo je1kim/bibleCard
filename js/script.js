@@ -123,7 +123,6 @@ btn_2.addEventListener('click', () => {
 reBtn.addEventListener('click', () => {
     const name = nameInput.value;
     loadingText.textContent = `${name}에게`; 
-    setBibleCard(name);
 
     contents_4.classList.remove('active');
     contents_3.classList.add('active');
@@ -131,6 +130,7 @@ reBtn.addEventListener('click', () => {
     let changeImgLog = setInterval(changeImage, 550);
 
     setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
+        setBibleCard(name);
         contents_3.classList.remove('active');
         contents_4.classList.add('active');
         clearInterval(changeImgLog);
@@ -147,10 +147,10 @@ downloadBtn.addEventListener('click', async () => {
 
     const imageData = canvas.toDataURL("image/png");
 
-    const link = document.createElement("a");
-    link.href = imageData;
-    link.download = '말씀카드_'+nameInput.value+'.png';
-    link.click();
+    // const link = document.createElement("a");
+    // link.href = imageData;
+    // link.download = '말씀카드_'+nameInput.value+'.png';
+    // link.click();
 
     contents_5.classList.remove('active');
     contents_6.classList.add('active');
