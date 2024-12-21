@@ -323,13 +323,14 @@ h1, h2, h3, h4 {
     position: relative;
     display: flex;
     justify-content: center;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
 .download-img img{
     display: flex;
-    justify-content: center;
-    width: 450px;
+    justify-content: center;    
 }
 
 .download-card-text {
