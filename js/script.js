@@ -171,7 +171,7 @@ nameInput.addEventListener('input', () => {
         realLength = maxLength
     }
 
-    nameCount.textContent = `${realLength} / ${maxLength}`;
+    nameCount.textContent = `(${realLength} / ${maxLength})`;
 })
 
 function changeImage() {
