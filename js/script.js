@@ -141,7 +141,7 @@ reBtn.addEventListener('click', () => {
 // 최종 말씀 카트 다운로드 클릭 이벤트
 downloadBtn.addEventListener('click', async () => { 
     contents_4.classList.remove('active');
-    contents_5.classList.add('active');
+    // contents_5.classList.add('active');
 
     const canvas = await html2canvas(downloadImg);
 
@@ -152,10 +152,8 @@ downloadBtn.addEventListener('click', async () => {
     // link.download = '말씀카드_'+nameInput.value+'.png';
     // link.click();
 
-    contents_5.classList.remove('active');
+    // contents_5.classList.remove('active');
     contents_6.classList.add('active');
-
-    console.log(imageData);
 
     const resultImg = document.getElementById("resultImg");
     resultImg.src = imageData;

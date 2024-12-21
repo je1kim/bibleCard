@@ -346,3 +346,8 @@ h1, h2, h3, h4 {
     letter-spacing: 0.5px;
     font-size: 14px;
 }
+
+.result-img {
+    width: 100%;
+    height: 100%;
+}
