@@ -146,11 +146,15 @@ downloadBtn.addEventListener('click', async () => {
 
     const imageData = canvas.toDataURL("image/png");
 
-    const link = document.createElement("a");
-    link.href = imageData;
-    link.download = '말씀카드_'+nameInput.value+'.png';
+    // const link = document.createElement("a");
+    // link.href = imageData;
+    // link.download = '말씀카드_'+nameInput.value+'.png';
     // link.click();
-    document.body.appendChild(link);
+
+    const link = document.createElement("img");
+    link.src = imageData;
+    // link.download = '말씀카드_'+nameInput.value+'.png';
+    // link.click();
 })
 
 nameInput.addEventListener('input', () => {
