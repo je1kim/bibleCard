@@ -101,16 +101,16 @@ btn_2.addEventListener('click', () => {
         alert("이름을 입력해주세요.")
         
     } else {
+        const name = nameInput.value;
+        loadingText.textContent = `${name}에게`; 
+
+        setBibleCard(name);
         let changeImgLog = setInterval(changeImage, 500);
 
         contents_2.classList.remove('active');
         contents_3.classList.add('active');
-
-        const name = nameInput.value;
-        loadingText.textContent = `${name}에게`; 
         
         setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
-            setBibleCard(name);
             contents_3.classList.remove('active');
             contents_4.classList.add('active');
             clearInterval(changeImgLog);
@@ -124,13 +124,15 @@ reBtn.addEventListener('click', () => {
     contents_4.classList.remove('active');
     contents_3.classList.add('active');
     cardImg.classList.remove('active');
-    
-    let changeImgLog = setInterval(changeImage, 550);
+
     const name = nameInput.value;
     loadingText.textContent = `${name}에게`; 
+    setBibleCard(name);
+
+    let changeImgLog = setInterval(changeImage, 550);
 
     setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
-        setBibleCard(name);
+        
         contents_3.classList.remove('active');
         contents_4.classList.add('active');
         clearInterval(changeImgLog);
