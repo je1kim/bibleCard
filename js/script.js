@@ -171,7 +171,7 @@ nameInput.addEventListener('input', () => {
         realLength = maxLength
     }
 
-    nameCount.textContent = `(${realLength} / ${maxLength})`;
+    nameCount.textContent = `(${realLength}/${maxLength})`;
 })
 
 function changeImage() {
@@ -234,9 +234,10 @@ function getBackgroundType(backgroundPath) {
 
 function setBibleCard(userName) {
     getSmallCard().then((result) => {
+        
+        let fontType = getBackgroundType(result.bibleImg)
         document.getElementById('randomImage').src = result.bibleImg
         cardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
-        let fontType = getBackgroundType(result.bibleImg)
         let fontColor = fontType.isBlackText ? "#000" : "#fff";
 
         let downloadBackImgFile = result.bibleImg.split(".")[0]+"-bg.png";
