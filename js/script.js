@@ -120,14 +120,12 @@ btn_2.addEventListener('click', () => {
 
 // 말씀 다시 뽑기 이벤트
 reBtn.addEventListener('click', () => {
-
-    contents_4.classList.remove('active');
-    contents_3.classList.add('active');
-    cardImg.classList.remove('active');
-
     const name = nameInput.value;
     loadingText.textContent = `${name}에게`; 
     setBibleCard(name);
+
+    contents_4.classList.remove('active');
+    contents_3.classList.add('active');
 
     let changeImgLog = setInterval(changeImage, 550);
 
