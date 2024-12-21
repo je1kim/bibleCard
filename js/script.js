@@ -89,3 +89,34 @@ function getBackgroundType(backgroundPath) {
     }
     return { isType2Layout: false, isBlackText: false }; // 기본값
 }
+
+function setBibleCard(userName) {
+    getSmallCard().then((result) => {
+        document.getElementById('randomImage').src = result.bibleImg
+        cardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
+        let fontType = getBackgroundType(result.bibleImg)
+        let fontColor = fontType.isBlackText ? "#000" : "#fff";
+
+        let downloadImg = result.bibleImg.split(".")[0]+"-bg.png";
+        contents_5.style.backgroundImages = downloadImg;
+
+        cardImg.style.color = fontColor;
+                            
+        bibleContents = result.bible.content.replaceAll("/", "<br>");
+        bibleLoc = result.bible.location;
+
+        cardBible.innerHTML = bibleContents;
+        cardFooter.innerHTML = bibleLoc;
+
+        if (fontType.isType2Layout) {// Logo top 112 bottum 45
+            cardImg.style.color = fontColor;
+            cardText.style.paddingTop = '112px';
+            cardText.style.paddingBottom = '45px';
+
+        } else { // Logo top 40 bottum 60
+            cardImg.style.color = fontColor;
+            cardText.style.paddingTop = '40px';
+            cardText.style.paddingBottom = '60px';
+        }
+    })
+} 
