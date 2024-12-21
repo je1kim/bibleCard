@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
         <title>부평감리교회 청년부 말씀뽑기</title>
         <link rel="stylesheet" href="./css/style.css"/>
-        <script src="./js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     </head>
     <body>
         <div class="container">
@@ -72,109 +72,19 @@
                 </div>
             </div>
 
-            <div id="contents-5" class="download-img">
-
+            <div id="contents-5" class="contents">
+                <div id="downloadImg" class="download-img">
+                    <img id="downloadBackImg">
+                    <div id="downloadCardText" class="download-card-text">
+                        <div>
+                            <p id="downloadCardName"></p>
+                        </div>
+                        <div id="downloadCardBible"></div>
+                        <div id="downloadCardFooter"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
-    <script>
-
-        const btn_1 = document.getElementById('btn-1');
-        const btn_2 = document.getElementById('btn-2');
-        const contents_1 = document.getElementById('contents-1');
-        const contents_2 = document.getElementById('contents-2');
-        const contents_3 = document.getElementById('contents-3');
-        const contents_4 = document.getElementById('contents-4');
-        const contents_5 = document.getElementById('contents-5');
-
-        const nameInput = document.getElementById("nameInput");
-        const namcCount = document.getElementById("nameCount");
-        const maxLength = nameInput.maxLength
-        const subBtn = document.getElementById("sub-btn");
-        const downloadBtn = document.getElementById("downloadBtn");
-
-        const loadingText = document.getElementById("loadingTextName");
-        const cardName = document.getElementById("cardName");
-
-        const cardText = document.getElementById("cardText");
-        const cardBible = document.getElementById("cardBible");
-        const cardFooter = document.getElementById("cardFooter");
-
-        const logindImgs = document.querySelectorAll('.loading-icon img');
-        let currentIndex = 0;
-        const totalImages = logindImgs.length;
-
-        const cardImg = document.getElementById("cardImg");
-
-        function changeImage() {
-            logindImgs[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % totalImages;
-            console.log(currentIndex);
-            logindImgs[currentIndex].classList.add('active');
-        }
-
-        const loadingBar = document.querySelector('.loading-progress');
-
-        btn_1.addEventListener('click', () => {
-            contents_1.classList.remove('active');
-            contents_2.classList.add('active');
-        });
-
-        btn_2.addEventListener('click', () => {
-
-            let nameValue = nameInput.value;
-            let realLength = [...nameValue].length;
-
-            if (realLength === 0){
-                subBtn.classList.remove('hover');
-                subBtn.classList.add('no-hover');
-                alert("이름을 입력해주세요.")
-                
-            } else {
-                let changeImgLog = setInterval(changeImage, 1000);
-
-                contents_2.classList.remove('active');
-                contents_3.classList.add('active');
-
-                const name = nameInput.value;
-                loadingText.textContent = `${name}에게`; 
-                
-                setBibleCard(name);
-
-                setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
-                    contents_3.classList.remove('active');
-                    contents_4.classList.add('active');
-                    clearInterval(changeImgLog);
-                }, 3000); 
-
-            }
-        })
-
-        nameInput.addEventListener('input', () => {
-            
-            let nameValue = nameInput.value;
-            let realLength = [...nameValue].length;
-
-            if (realLength > 0) {
-                subBtn.classList.remove('no-hover');
-                subBtn.classList.add('active');
-            } else {
-                subBtn.classList.remove('active');
-            }
-
-            if (realLength > maxLength){
-                nameValue = [...nameValue].slice(0, maxLength).join('');
-                nameInput.value = nameValue
-                realLength = maxLength
-            }
-
-            nameCount.textContent = `${realLength} / ${maxLength}`;
-        })
-
-        downloadBtn.addEventListener('click', () => {
-            contents_4.classList.remove('active');
-            contents_5.classList.add('active');
-        })
-
-    </script>
+    <script src="./js/script.js"></script>
 </html>
