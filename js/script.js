@@ -149,7 +149,7 @@ downloadBtn.addEventListener('click', async () => {
     const link = document.createElement("a");
     link.href = imageData;
     link.download = '말씀카드_'+nameInput.value+'.png';
-    link.click();
+    // link.click();
 })
 
 nameInput.addEventListener('input', () => {
