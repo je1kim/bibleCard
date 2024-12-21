@@ -134,7 +134,7 @@ reBtn.addEventListener('click', () => {
         contents_3.classList.remove('active');
         contents_4.classList.add('active');
         clearInterval(changeImgLog);
-    }, 3000); 
+    }, 6000); 
     
 })
 
