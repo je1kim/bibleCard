@@ -283,7 +283,5 @@ function setBibleCard(userName) {
             downloadCardText.style.paddingTop = '235px';
             downloadCardText.style.paddingBottom = '235px';
         }
-
-        
     })
 } 
