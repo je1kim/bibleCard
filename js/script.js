@@ -234,9 +234,9 @@ function getBackgroundType(backgroundPath) {
 
 function setBibleCard(userName) {
     getSmallCard().then((result) => {
+        document.getElementById('randomImage').src = result.bibleImg
         
         let fontType = getBackgroundType(result.bibleImg)
-        document.getElementById('randomImage').src = result.bibleImg
         cardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
         let fontColor = fontType.isBlackText ? "#000" : "#fff";
 
