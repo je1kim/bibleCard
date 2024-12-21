@@ -12,6 +12,7 @@ const contents_2 = document.getElementById('contents-2');
 const contents_3 = document.getElementById('contents-3');
 const contents_4 = document.getElementById('contents-4');
 const contents_5 = document.getElementById('contents-5');
+const contents_6 = document.getElementById('contents-6');
 
 // 이름 입력 페이지 CONSTANT
 const nameInput = document.getElementById("nameInput");
@@ -114,7 +115,7 @@ btn_2.addEventListener('click', () => {
             contents_3.classList.remove('active');
             contents_4.classList.add('active');
             clearInterval(changeImgLog);
-        }, 5000); 
+        }, 6000); 
     }
 })
 
@@ -150,6 +151,14 @@ downloadBtn.addEventListener('click', async () => {
     link.href = imageData;
     link.download = '말씀카드_'+nameInput.value+'.png';
     link.click();
+
+    contents_5.classList.remove('active');
+    contents_6.classList.add('active');
+
+    console.log(imageData);
+
+    const resultImg = document.getElementById("resultImg");
+    resultImg.src = imageData;
 
     // const link = document.createElement("img");
     // link.src = imageData;
