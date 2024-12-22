@@ -5,6 +5,8 @@
     margin: 0px;
     padding: 0px;
     border: 0px;
+    overflow-x:hidden;
+    overflow-y: hidden;
     font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
@@ -13,7 +15,7 @@ h1, h2, h3, h4 {
 }
 
 .container {
-    height: 100vh;
+    height: 100%;
     max-width: 450px;
     margin: 0 auto;
 }
@@ -41,7 +43,7 @@ h1, h2, h3, h4 {
 .main-contents {
     position:relative;
     min-width: 450px;
-    height: 100%;
+    height: 100vh;
     background-size: cover !important;
     background: url('../images/back-img.svg') no-repeat center;
 }
@@ -83,7 +85,7 @@ h1, h2, h3, h4 {
     left: 50%;
     transform: translate(-50%);
     bottom: 0px;
-    padding: 0 16px 36px 16px;
+    padding: 0px 16px 36px 16px;
 }
 
 .main-btn button {
@@ -120,7 +122,8 @@ h1, h2, h3, h4 {
     min-width: 450px;
     height: 100%;
     background-size: cover !important;
-    background-color: #1C7349;
+    /* background-color: #1C7349; */
+    background: url('../images/back-img-green.svg') no-repeat center;
 }
 
 .name-title {
@@ -331,7 +334,7 @@ h1, h2, h3, h4 {
 .download-img img{
     display: flex;
     justify-content: center;
-    /* width: 375px; */
+    width: 100%;
 }
 
 .download-card-text {
@@ -350,11 +353,10 @@ h1, h2, h3, h4 {
 .result-img {
     display: flex;
     justify-content: center;
-    min-width: 450px;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .result-img img {
-    width: 100%;
+    width: 450px;
     height: 100%;
 }

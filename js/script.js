@@ -28,7 +28,7 @@ let currentIndex = 0;
 const totalImages = logindImgs.length;
 
 // 스몰 말씀 카드 페이지 CONSTANT
-const subBtn = document.getElementById("sub-btn");
+const subBtn = document.getElementById("subBtn");
 const cardImg = document.getElementById("cardImg");
 const reBtn = document.getElementById("reBtn");
 const downloadBtn = document.getElementById("downloadBtn");
@@ -141,27 +141,30 @@ reBtn.addEventListener('click', () => {
 // 최종 말씀 카트 다운로드 클릭 이벤트
 downloadBtn.addEventListener('click', async () => { 
     contents_4.classList.remove('active');
-    // contents_5.classList.add('active');
+    contents_5.classList.add('active');
 
     const canvas = await html2canvas(downloadImg);
 
     const imageData = canvas.toDataURL("image/png");
 
-    // const link = document.createElement("a");
-    // link.href = imageData;
-    // link.download = '말씀카드_'+nameInput.value+'.png';
-    // link.click();
+    const link = document.createElement("a");
+    link.href = imageData;
+    link.download = '말씀카드_'+nameInput.value+'.png';
 
-    // contents_5.classList.remove('active');
-    contents_6.classList.add('active');
+    // Step 5: 모바일(iOS/Android) 대응 처리
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        link.target = '_blank'; // 새 창에서 열어서 유저가 저장하도록 유도
+        
+        contents_5.classList.remove('active');
+        contents_6.classList.add('active');
 
-    const resultImg = document.getElementById("resultImg");
-    resultImg.src = imageData;
+        const resultImg = document.getElementById("resultImg");
+        resultImg.src = imageData;
+    } else {
+        link.click(); // 데스크탑에서는 바로 다운로드
+    }
 
-    // const link = document.createElement("img");
-    // link.src = imageData;
-    // link.download = '말씀카드_'+nameInput.value+'.png';
-    // link.click();
+    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 })
 
 nameInput.addEventListener('input', () => {
@@ -271,8 +274,8 @@ function setBibleCard(userName) {
             cardText.style.paddingBottom = '45px';
 
             downloadImg.style.color = fontColor;
-            downloadCardText.style.paddingTop = '235px';
-            downloadCardText.style.paddingBottom = '235px';
+            downloadCardText.style.paddingTop = '47%';
+            downloadCardText.style.paddingBottom = '25%';
 
         } else { // Logo top 40 bottum 60
             cardImg.style.color = fontColor;
@@ -280,8 +283,8 @@ function setBibleCard(userName) {
             cardText.style.paddingBottom = '60px';
             
             downloadImg.style.color = fontColor;
-            downloadCardText.style.paddingTop = '235px';
-            downloadCardText.style.paddingBottom = '235px';
+            downloadCardText.style.paddingTop = '25%';
+            downloadCardText.style.paddingBottom = '25%';
         }
     })
 } 
