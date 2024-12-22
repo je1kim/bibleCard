@@ -160,7 +160,16 @@ downloadBtn.addEventListener('click', async () => {
 
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
-    } else {
+    } else if (/Android/i.test(navigator.userAgent)) {
+        contents_5.classList.remove('active');
+        contents_6.classList.add('active');
+
+        const resultImg = document.getElementById("resultImg");
+        resultImg.src = imageData;
+        
+        link.click(); // 데스크탑에서는 바로 다운로드
+    }
+    else {
         link.click(); // 데스크탑에서는 바로 다운로드
     }
 
@@ -225,7 +234,6 @@ async function getSmallCard(){
     const verses = await getBibleVerses();
     const randomVerse = getRandomElement(verses);
     const randomBackground = getRandomElement(backgroundImages);
-    // let userName = document.getElementById("nameInput");
 
     result = {bible: randomVerse, bibleImg: randomBackground};
 
