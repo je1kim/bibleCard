@@ -122,8 +122,7 @@ h1, h2, h3, h4 {
     min-width: 450px;
     height: 100%;
     background-size: cover !important;
-    /* background-color: #1C7349; */
-    background: url('../images/back-img-green.svg') no-repeat center;
+    background-color: #1C7349;
 }
 
 .name-title {
