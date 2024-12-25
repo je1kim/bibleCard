@@ -5,6 +5,7 @@
 
 const btn_1 = document.getElementById('btn-1');
 const btn_2 = document.getElementById('btn-2');
+const btn_3 = document.getElementById('btn-3');
 
 // 화면 전환
 const contents_1 = document.getElementById('contents-1');
@@ -28,6 +29,7 @@ let currentIndex = 0;
 const totalImages = logindImgs.length;
 
 // 스몰 말씀 카드 페이지 CONSTANT
+const smallCardIcon = document.getElementById("smallCardIcon");
 const subBtn = document.getElementById("subBtn");
 const cardImg = document.getElementById("cardImg");
 const reBtn = document.getElementById("reBtn");
@@ -46,43 +48,52 @@ const downloadCardText = document.getElementById("downloadCardText");
 
 // 백그라운드 스몰 말씀 카드 이미지 목록
 const backgroundImages = [
-    // 타입 1 배경 (텍스트 배치2(로고o), 흰색)
-    'images/bible_background/1-1.png',
-    'images/bible_background/1-2.png',
-    'images/bible_background/1-3.png',
-    'images/bible_background/1-4.png',
-    'images/bible_background/1-5.png',
-    'images/bible_background/1-6.png',
-    'images/bible_background/1-7.png',
-    'images/bible_background/1-8.png',
-    'images/bible_background/1-9.png',
-    'images/bible_background/1-10.png',
-    'images/bible_background/1-11.png',
+    // star
+    'images/card/1-1_sw_01539D.png',
+    'images/card/1-2_sb_FFB2C2.png',
+    'images/card/1-3_sb_96E1C0.png',
+
+    // cloud
+    'images/card/2-1_sw_5E3F82.png', 
+    'images/card/2-2_sw_F87839.png', 
+    'images/card/2-3_sw_3DC0A0.png', 
+
+    // grass
+    'images/card/3-1_sw_98BC62.png', 
+    'images/card/3-2_sw_365260.png', 
+    'images/card/3-3_sw_A09071.png', 
     
-    // 타입 2 배경 (텍스트 배치2(로고o), 검정색)
-    'images/bible_background/2-1.png',
-    'images/bible_background/2-2.png',
-    'images/bible_background/2-3.png',
-    'images/bible_background/2-4.png',
+    // cloud(?)
+    'images/card/4-1_sw_F182A2.png', 
+    'images/card/4-2_sb_F5C8A9.png', 
+    'images/card/4-3_sw_C83B44.png', 
     
-    // 타입 3 배경 (텍스트 배치1(로고x), 흰색)
-    'images/bible_background/3-1.png',
-    'images/bible_background/3-2.png',
-    'images/bible_background/3-3.png',
-    'images/bible_background/3-4.png',
-    'images/bible_background/3-5.png',
-    'images/bible_background/3-6.png',
-    'images/bible_background/3-7.png',
-    
-    // 타입 4 배경 (텍스트 배치1(로고x), 검정색)
-    'images/bible_background/4-1.png',
-    'images/bible_background/4-2.png',
-    'images/bible_background/4-3.png',
-    'images/bible_background/4-4.png',
-    'images/bible_background/4-5.png',
-    'images/bible_background/4-6.png',
-    'images/bible_background/4-7.png',
-    'images/bible_background/4-8.png',
+    // rain
+    'images/card/5-1_sw_00203F.png', 
+    'images/card/5-2_sw_555A46.png', 
+    'images/card/5-3_sb_FFD55F.png',
+
+    // large icon
+    'images/card/6-1_lb_FCFCE4.png',
+    'images/card/6-2_lb_FFDF84.png',
+    'images/card/6-3_lb_FFFDB7.png',
+
+    'images/card/7-1_lb_F2D5CD.png',
+    'images/card/7-2_lw_7A9ACB.png',
+    'images/card/7-3_lw_EE9992.png',
+
+    'images/card/8-1_lw_A9B489.png',
+    'images/card/8-2_lb_B9E1D9.png',
+    'images/card/8-3_lb_DEED90.png',
+
+    'images/card/9-1_lb_C3D8B9.png',
+    'images/card/9-2_lw_9E9482.png',
+    'images/card/9-3_lw_CC6468.png',
+
+    'images/card/10-1_lw_A1B5D8.png',
+    'images/card/10-2_lw_A896C8.png',
+    'images/card/10-3_lb_96E1C0.png'
+
 ];
 
 //  화면 전환 클릭 이벤트
@@ -115,12 +126,14 @@ btn_2.addEventListener('click', () => {
             contents_3.classList.remove('active');
             contents_4.classList.add('active');
             clearInterval(changeImgLog);
-        }, 6000); 
+        }, 100); 
     }
 })
 
 // 말씀 다시 뽑기 이벤트
 reBtn.addEventListener('click', () => {
+    reBtn.classList.add("clicked");
+
     const name = nameInput.value;
     loadingText.textContent = `${name}에게`; 
 
@@ -129,12 +142,20 @@ reBtn.addEventListener('click', () => {
 
     let changeImgLog = setInterval(changeImage, 550);
 
+    cardImg.style.left = "0px";
+    cardImg.style.top = "0px";
+
     setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
+        reBtn.classList.remove("clicked");
+
         setBibleCard(name);
+        
         contents_3.classList.remove('active');
         contents_4.classList.add('active');
+
         clearInterval(changeImgLog);
-    }, 6000); 
+
+    }, 100); 
     
 })
 
@@ -166,7 +187,7 @@ downloadBtn.addEventListener('click', async () => {
 
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
-        
+
         link.click(); // 데스크탑에서는 바로 다운로드
     }
     else {
@@ -242,13 +263,13 @@ async function getSmallCard(){
 
 function getBackgroundType(backgroundPath) {
 
-    if (backgroundPath.includes('1-')) {
+    if (backgroundPath.includes('sw')) {
         return { isType2Layout: true, isBlackText: false };  // 타입 1: 로고o, 흰색
-    } else if (backgroundPath.includes('2-')) {
+    } else if (backgroundPath.includes('sb')) {
         return { isType2Layout: true, isBlackText: true };   // 타입 2: 로고o, 검정색
-    } else if (backgroundPath.includes('3-')) {
+    } else if (backgroundPath.includes('lw')) {
         return { isType2Layout: false, isBlackText: false }; // 타입 3: 로고x, 흰색
-    } else if (backgroundPath.includes('4-')) {
+    } else if (backgroundPath.includes('lb')) {
         return { isType2Layout: false, isBlackText: true };  // 타입 4: 로고x, 검정색
     }
     return { isType2Layout: false, isBlackText: false }; // 기본값
@@ -256,14 +277,13 @@ function getBackgroundType(backgroundPath) {
 
 function setBibleCard(userName) {
     getSmallCard().then((result) => {
-        document.getElementById('randomImage').src = result.bibleImg
-        
-        let fontType = getBackgroundType(result.bibleImg)
+        let imgFile = result.bibleImg;
+        let fontType = getBackgroundType(imgFile)
         cardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
         let fontColor = fontType.isBlackText ? "#000" : "#fff";
 
-        let downloadBackImgFile = result.bibleImg.split(".")[0]+"-bg.png";
-        cardImg.style.color = fontColor;
+        let backGroundColor = "#"+result.bibleImg.split(".")[0].split("_")[2];
+        // let downloadBackImgFile = result.bibleImg.split(".")[0]+"-bg.png";
                             
         let bibleContents = result.bible.content.replaceAll("/", "<br>");
         let bibleLoc = result.bible.location ;
@@ -271,28 +291,103 @@ function setBibleCard(userName) {
         cardBible.innerHTML = bibleContents;
         cardFooter.innerHTML = bibleLoc;
 
-        downloadBackImg.src = downloadBackImgFile;
         downloadCardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
         downloadCardBible.innerHTML = bibleContents;
         downloadCardFooter.innerHTML = bibleLoc;
 
         if (fontType.isType2Layout) {// Logo top 112 bottum 45
+
+            cardImg.style.color = fontColor;
+            cardImg.style.background = backGroundColor;
+
+            smallCardIcon.src = result.bibleImg;
+            smallCardIcon.style.marginTop = "33px"
+            smallCardIcon.style.width = "60px"
+            smallCardIcon.style.height = "60px"
+
             cardImg.style.color = fontColor;
             cardText.style.paddingTop = '112px';
             cardText.style.paddingBottom = '45px';
+            
 
+            downloadImg.style.background = backGroundColor;
             downloadImg.style.color = fontColor;
-            downloadCardText.style.paddingTop = '47%';
-            downloadCardText.style.paddingBottom = '25%';
+
+            downloadBackImg.src = imgFile;
+            downloadBackImg.style.marginTop = "129px"
+            downloadBackImg.style.width = "60px"
+            downloadBackImg.style.height = "60px"
+            downloadCardText.style.paddingTop = '200px';
 
         } else { // Logo top 40 bottum 60
+
             cardImg.style.color = fontColor;
+            cardImg.style.background = backGroundColor;
+            smallCardIcon.src = imgFile;
+
             cardText.style.paddingTop = '40px';
             cardText.style.paddingBottom = '60px';
-            
+
+            downloadBackImg.src = imgFile.split(".")[0]+"-bg.png"
+
             downloadImg.style.color = fontColor;
-            downloadCardText.style.paddingTop = '25%';
-            downloadCardText.style.paddingBottom = '25%';
+            downloadImg.style.background = backGroundColor;
+            
+            downloadCardText.style.paddingTop = '55%';
+            downloadCardText.style.paddingBottom = '5%';
+            
+            if (imgFile.includes("6-")) {
+                smallCardIcon.style.position = "absolute";
+                smallCardIcon.style.top = 0;
+                smallCardIcon.style.left = "94.47px";
+                smallCardIcon.style.width = "339px";
+                smallCardIcon.style.height = "443px";
+                smallCardIcon.style.objectFit = "center"; 
+                smallCardIcon.style.objectPosition = "center"; 
+
+            } else if (imgFile.includes("7-")) {
+                smallCardIcon.style.position = "absolute";
+                smallCardIcon.style.bottom = "55.13px";
+                smallCardIcon.style.left = "68.07px";
+                smallCardIcon.style.width = "279.85px";
+                smallCardIcon.style.height = "385.75px";
+                smallCardIcon.style.objectFit = "center"; 
+                smallCardIcon.style.objectPosition = "center";
+                
+            } else if (imgFile.includes("8-")) {
+                smallCardIcon.style.position = "absolute";
+                smallCardIcon.style.top = "-39px";
+                smallCardIcon.style.left = "-6px";
+                smallCardIcon.style.width = "181px";
+                smallCardIcon.style.height = "501px";
+                smallCardIcon.style.objectFit = "center"; /* 영역 꽉 채우고 비율 유지 */
+                smallCardIcon.style.objectPosition = "center"; /* 중심 기준으로 배치 */
+
+            } else if (imgFile.includes("9-")) {
+                smallCardIcon.style.position = "absolute";
+                smallCardIcon.style.top = "57.41px";
+                smallCardIcon.style.left = "-342.91px";
+                smallCardIcon.style.width = "570px";
+                smallCardIcon.style.height = "417px";
+                smallCardIcon.style.objectFit = "center"; /* 영역 꽉 채우고 비율 유지 */
+                smallCardIcon.style.objectPosition = "center"; /* 중심 기준으로 배치 */
+
+            } else if (imgFile.includes("10-")) {
+                smallCardIcon.style.position = "absolute";
+                smallCardIcon.style.top = "196px";
+                smallCardIcon.style.left = "-53px";
+                smallCardIcon.style.width = "277px";
+                smallCardIcon.style.height = "241px";
+                smallCardIcon.style.objectFit = "center"; /* 영역 꽉 채우고 비율 유지 */
+                smallCardIcon.style.objectPosition = "center"; /* 중심 기준으로 배치 */
+
+            }
+
+            downloadBackImg.style.position = "absolute";
+            downloadBackImg.style.width = window.innerWidth + "px";
+            downloadBackImg.style.height = "auto";
+            downloadBackImg.style.objectFit = "center"; 
+            downloadBackImg.style.objectPosition = "center"; 
         }
-    })
+    });
 } 
