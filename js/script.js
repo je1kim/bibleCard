@@ -49,50 +49,50 @@ const downloadCardText = document.getElementById("downloadCardText");
 // 백그라운드 스몰 말씀 카드 이미지 목록
 const backgroundImages = [
     // star
-    'images/card/1-1_sw_01539D.png',
-    'images/card/1-2_sb_FFB2C2.png',
-    'images/card/1-3_sb_96E1C0.png',
+    // 'images/card/1-1_sw_01539D.png',
+    // 'images/card/1-2_sb_FFB2C2.png',
+    // 'images/card/1-3_sb_96E1C0.png',
 
     // cloud
-    'images/card/2-1_sw_5E3F82.png', 
-    'images/card/2-2_sw_F87839.png', 
-    'images/card/2-3_sw_3DC0A0.png', 
+    // 'images/card/2-1_sw_5E3F82.png', 
+    // 'images/card/2-2_sw_F87839.png', 
+    // 'images/card/2-3_sw_3DC0A0.png', 
 
     // grass
-    'images/card/3-1_sw_98BC62.png', 
-    'images/card/3-2_sw_365260.png', 
-    'images/card/3-3_sw_A09071.png', 
+    // 'images/card/3-1_sw_98BC62.png', 
+    // 'images/card/3-2_sw_365260.png', 
+    // 'images/card/3-3_sw_A09071.png', 
     
     // cloud(?)
-    'images/card/4-1_sw_F182A2.png', 
-    'images/card/4-2_sb_F5C8A9.png', 
-    'images/card/4-3_sw_C83B44.png', 
+    // 'images/card/4-1_sw_F182A2.png', 
+    // 'images/card/4-2_sb_F5C8A9.png', 
+    // 'images/card/4-3_sw_C83B44.png', 
     
     // rain
-    'images/card/5-1_sw_00203F.png', 
-    'images/card/5-2_sw_555A46.png', 
-    'images/card/5-3_sb_FFD55F.png',
+    // 'images/card/5-1_sw_00203F.png', 
+    // 'images/card/5-2_sw_555A46.png', 
+    // 'images/card/5-3_sb_FFD55F.png',
 
     // large icon
-    'images/card/6-1_lb_FCFCE4.png',
-    'images/card/6-2_lb_FFDF84.png',
+    // 'images/card/6-1_lb_FCFCE4.png',
+    // 'images/card/6-2_lb_FFDF84.png',
     'images/card/6-3_lb_FFFDB7.png',
 
-    'images/card/7-1_lb_F2D5CD.png',
-    'images/card/7-2_lw_7A9ACB.png',
-    'images/card/7-3_lw_EE9992.png',
+    // 'images/card/7-1_lb_F2D5CD.png',
+    // 'images/card/7-2_lw_7A9ACB.png',
+    // 'images/card/7-3_lw_EE9992.png',
 
-    'images/card/8-1_lw_A9B489.png',
-    'images/card/8-2_lb_B9E1D9.png',
-    'images/card/8-3_lb_DEED90.png',
+    // 'images/card/8-1_lw_A9B489.png',
+    // 'images/card/8-2_lb_B9E1D9.png',
+    // 'images/card/8-3_lb_DEED90.png',
 
-    'images/card/9-1_lb_C3D8B9.png',
-    'images/card/9-2_lw_9E9482.png',
-    'images/card/9-3_lw_CC6468.png',
+    // 'images/card/9-1_lb_C3D8B9.png',
+    // 'images/card/9-2_lw_9E9482.png',
+    // 'images/card/9-3_lw_CC6468.png',
 
-    'images/card/10-1_lw_A1B5D8.png',
-    'images/card/10-2_lw_A896C8.png',
-    'images/card/10-3_lb_96E1C0.png'
+    // 'images/card/10-1_lw_A1B5D8.png',
+    // 'images/card/10-2_lw_A896C8.png',
+    // 'images/card/10-3_lb_96E1C0.png'
 
 ];
 
