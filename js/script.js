@@ -295,6 +295,11 @@ function setBibleCard(userName) {
         downloadCardBible.innerHTML = bibleContents;
         downloadCardFooter.innerHTML = bibleLoc;
 
+
+        smallCardIcon.style.cssText = '';
+        downloadBackImg.style.cssText = '';
+        cardText.style.cssText = '';
+        downloadCardText.style.cssText = '';
         if (fontType.isType2Layout) {// Logo top 112 bottum 45
 
             cardImg.style.color = fontColor;
@@ -309,7 +314,6 @@ function setBibleCard(userName) {
             cardText.style.paddingTop = '112px';
             cardText.style.paddingBottom = '45px';
             
-
             downloadImg.style.background = backGroundColor;
             downloadImg.style.color = fontColor;
 
@@ -345,6 +349,12 @@ function setBibleCard(userName) {
                 smallCardIcon.style.objectFit = "center"; 
                 smallCardIcon.style.objectPosition = "center"; 
 
+                downloadBackImg.style.position = "absolute";
+                downloadBackImg.style.width = window.innerWidth + "px";
+                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectPosition = "center"; 
+
             } else if (imgFile.includes("7-")) {
                 smallCardIcon.style.position = "absolute";
                 smallCardIcon.style.bottom = "55.13px";
@@ -353,6 +363,12 @@ function setBibleCard(userName) {
                 smallCardIcon.style.height = "385.75px";
                 smallCardIcon.style.objectFit = "center"; 
                 smallCardIcon.style.objectPosition = "center";
+
+                downloadBackImg.style.position = "absolute";
+                downloadBackImg.style.width = window.innerWidth + "px";
+                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectPosition = "center"; 
                 
             } else if (imgFile.includes("8-")) {
                 smallCardIcon.style.position = "absolute";
@@ -360,8 +376,14 @@ function setBibleCard(userName) {
                 smallCardIcon.style.left = "-6px";
                 smallCardIcon.style.width = "181px";
                 smallCardIcon.style.height = "501px";
-                smallCardIcon.style.objectFit = "center"; /* 영역 꽉 채우고 비율 유지 */
-                smallCardIcon.style.objectPosition = "center"; /* 중심 기준으로 배치 */
+                smallCardIcon.style.objectFit = "center"; 
+                smallCardIcon.style.objectPosition = "center"; 
+
+                downloadBackImg.style.position = "absolute";
+                downloadBackImg.style.width = window.innerWidth + "px";
+                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectPosition = "center"; 
 
             } else if (imgFile.includes("9-")) {
                 smallCardIcon.style.position = "absolute";
@@ -369,8 +391,14 @@ function setBibleCard(userName) {
                 smallCardIcon.style.left = "-342.91px";
                 smallCardIcon.style.width = "570px";
                 smallCardIcon.style.height = "417px";
-                smallCardIcon.style.objectFit = "center"; /* 영역 꽉 채우고 비율 유지 */
-                smallCardIcon.style.objectPosition = "center"; /* 중심 기준으로 배치 */
+                smallCardIcon.style.objectFit = "center"; 
+                smallCardIcon.style.objectPosition = "center"; 
+
+                downloadBackImg.style.position = "absolute";
+                downloadBackImg.style.width = window.innerWidth + "px";
+                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectPosition = "center"; 
 
             } else if (imgFile.includes("10-")) {
                 smallCardIcon.style.position = "absolute";
@@ -378,16 +406,17 @@ function setBibleCard(userName) {
                 smallCardIcon.style.left = "-53px";
                 smallCardIcon.style.width = "277px";
                 smallCardIcon.style.height = "241px";
-                smallCardIcon.style.objectFit = "center"; /* 영역 꽉 채우고 비율 유지 */
-                smallCardIcon.style.objectPosition = "center"; /* 중심 기준으로 배치 */
+                smallCardIcon.style.objectFit = "center"; 
+                smallCardIcon.style.objectPosition = "center"; 
+
+                downloadBackImg.style.position = "absolute";
+                downloadBackImg.style.top = "7%";
+                downloadBackImg.style.width = window.innerWidth + "px";
+                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectPosition = "center"; 
 
             }
-
-            downloadBackImg.style.position = "absolute";
-            downloadBackImg.style.width = window.innerWidth + "px";
-            downloadBackImg.style.height = "auto";
-            downloadBackImg.style.objectFit = "center"; 
-            downloadBackImg.style.objectPosition = "center"; 
         }
     });
 } 
