@@ -280,11 +280,10 @@ function setBibleCard(userName) {
         let imgFile = result.bibleImg;
         let fontType = getBackgroundType(imgFile)
         cardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
-        let fontColor = fontType.isBlackText ? "#000" : "#fff";
 
+        smallCardIcon.src = '';
+        let fontColor = fontType.isBlackText ? "#000" : "#fff";
         let backGroundColor = "#"+result.bibleImg.split(".")[0].split("_")[2];
-        // let downloadBackImgFile = result.bibleImg.split(".")[0]+"-bg.png";
-                            
         let bibleContents = result.bible.content.replaceAll("/", "<br>");
         let bibleLoc = result.bible.location ;
 
@@ -295,7 +294,6 @@ function setBibleCard(userName) {
         downloadCardBible.innerHTML = bibleContents;
         downloadCardFooter.innerHTML = bibleLoc;
 
-
         smallCardIcon.style.cssText = '';
         downloadBackImg.style.cssText = '';
         cardText.style.cssText = '';
@@ -305,7 +303,7 @@ function setBibleCard(userName) {
             cardImg.style.color = fontColor;
             cardImg.style.background = backGroundColor;
 
-            smallCardIcon.src = result.bibleImg;
+            smallCardIcon.src = imgFile;
             smallCardIcon.style.marginTop = "33px"
             smallCardIcon.style.width = "60px"
             smallCardIcon.style.height = "60px"
