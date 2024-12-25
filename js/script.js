@@ -301,9 +301,9 @@ function setBibleCard(userName) {
         if (fontType.isType2Layout) {// Logo top 112 bottum 45
 
             cardImg.style.color = fontColor;
+            smallCardIcon.src = imgFile;
             cardImg.style.background = backGroundColor;
 
-            smallCardIcon.src = imgFile;
             smallCardIcon.style.marginTop = "33px"
             smallCardIcon.style.width = "60px"
             smallCardIcon.style.height = "60px"
@@ -324,8 +324,8 @@ function setBibleCard(userName) {
         } else { // Logo top 40 bottum 60
 
             cardImg.style.color = fontColor;
-            cardImg.style.background = backGroundColor;
             smallCardIcon.src = imgFile;
+            cardImg.style.background = backGroundColor;
 
             cardText.style.paddingTop = '40px';
             cardText.style.paddingBottom = '60px';
