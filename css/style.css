@@ -341,12 +341,6 @@ h1, h2, h3, h4 {
     object-fit: cover;
 }
 
-/* .download-img img{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-} */
-
 .download-card-text {
     position: absolute;
     display: flex;
@@ -357,7 +351,8 @@ h1, h2, h3, h4 {
     height: 85%;
     line-height: 22px;
     letter-spacing: 0.5px;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-weight: normal;
 }
 
 .result-img {

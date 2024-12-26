@@ -176,14 +176,17 @@ downloadBtn.addEventListener('click', async () => {
     const isAndroid = /Android/i.test(navigator.userAgent);
 
     if (isIOS) {
-        link.target = '_blank'; // 새 창에서 열기
-        contents_5.classList.remove('active');
-        contents_6.classList.add('active');
-
+        
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
 
-        alert("이미지를 길게 눌러 저장하세요😇");
+        contents_5.classList.remove('active');
+        contents_6.classList.add('active');
+        
+        link.target = '_blank'; // 새 창에서 열기
+
+        setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
+
     } else if (isAndroid) {
         contents_5.classList.remove('active');
         contents_6.classList.add('active');
@@ -192,9 +195,9 @@ downloadBtn.addEventListener('click', async () => {
         resultImg.src = imageData;
 
         try {
-            link.click(); // 다운로드 트리거 (Android에서 작동)
+            setTimeout(() => link.click(), 50);
         } catch (err) {
-            alert("이미지를 길게 눌러 저장하세요😇");
+            setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
         }
     } else {
         // 데스크탑 환경 - 바로 다운로드
