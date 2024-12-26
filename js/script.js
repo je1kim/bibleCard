@@ -49,50 +49,50 @@ const downloadCardText = document.getElementById("downloadCardText");
 // 백그라운드 스몰 말씀 카드 이미지 목록
 const backgroundImages = [
     // star
-    // 'images/card/1-1_sw_01539D.png',
-    // 'images/card/1-2_sb_FFB2C2.png',
-    // 'images/card/1-3_sb_96E1C0.png',
+    'images/card/1-1_sw_01539D.png',
+    'images/card/1-2_sb_FFB2C2.png',
+    'images/card/1-3_sb_96E1C0.png',
 
     // cloud
-    // 'images/card/2-1_sw_5E3F82.png', 
-    // 'images/card/2-2_sw_F87839.png', 
-    // 'images/card/2-3_sw_3DC0A0.png', 
+    'images/card/2-1_sw_5E3F82.png', 
+    'images/card/2-2_sw_F87839.png', 
+    'images/card/2-3_sw_3DC0A0.png', 
 
     // grass
-    // 'images/card/3-1_sw_98BC62.png', 
-    // 'images/card/3-2_sw_365260.png', 
-    // 'images/card/3-3_sw_A09071.png', 
+    'images/card/3-1_sw_98BC62.png', 
+    'images/card/3-2_sw_365260.png', 
+    'images/card/3-3_sw_A09071.png', 
     
     // cloud(?)
-    // 'images/card/4-1_sw_F182A2.png', 
-    // 'images/card/4-2_sb_F5C8A9.png', 
-    // 'images/card/4-3_sw_C83B44.png', 
+    'images/card/4-1_sw_F182A2.png', 
+    'images/card/4-2_sb_F5C8A9.png', 
+    'images/card/4-3_sw_C83B44.png', 
     
     // rain
-    // 'images/card/5-1_sw_00203F.png', 
-    // 'images/card/5-2_sw_555A46.png', 
-    // 'images/card/5-3_sb_FFD55F.png',
+    'images/card/5-1_sw_00203F.png', 
+    'images/card/5-2_sw_555A46.png', 
+    'images/card/5-3_sb_FFD55F.png',
 
     // large icon
-    // 'images/card/6-1_lb_FCFCE4.png',
-    // 'images/card/6-2_lb_FFDF84.png',
+    'images/card/6-1_lb_FCFCE4.png',
+    'images/card/6-2_lb_FFDF84.png',
     'images/card/6-3_lb_FFFDB7.png',
 
-    // 'images/card/7-1_lb_F2D5CD.png',
-    // 'images/card/7-2_lw_7A9ACB.png',
-    // 'images/card/7-3_lw_EE9992.png',
+    'images/card/7-1_lb_F2D5CD.png',
+    'images/card/7-2_lw_7A9ACB.png',
+    'images/card/7-3_lw_EE9992.png',
 
-    // 'images/card/8-1_lw_A9B489.png',
-    // 'images/card/8-2_lb_B9E1D9.png',
-    // 'images/card/8-3_lb_DEED90.png',
+    'images/card/8-1_lw_A9B489.png',
+    'images/card/8-2_lb_B9E1D9.png',
+    'images/card/8-3_lb_DEED90.png',
 
-    // 'images/card/9-1_lb_C3D8B9.png',
-    // 'images/card/9-2_lw_9E9482.png',
-    // 'images/card/9-3_lw_CC6468.png',
+    'images/card/9-1_lb_C3D8B9.png',
+    'images/card/9-2_lw_9E9482.png',
+    'images/card/9-3_lw_CC6468.png',
 
-    // 'images/card/10-1_lw_A1B5D8.png',
-    // 'images/card/10-2_lw_A896C8.png',
-    // 'images/card/10-3_lb_96E1C0.png'
+    'images/card/10-1_lw_A1B5D8.png',
+    'images/card/10-2_lw_A896C8.png',
+    'images/card/10-3_lb_96E1C0.png'
 
 ];
 
@@ -172,26 +172,33 @@ downloadBtn.addEventListener('click', async () => {
     link.href = imageData;
     link.download = '말씀카드_'+nameInput.value+'.png';
 
-    // Step 5: 모바일(iOS/Android) 대응 처리
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        link.target = '_blank'; // 새 창에서 열어서 유저가 저장하도록 유도
-        
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    if (isIOS) {
+        link.target = '_blank'; // 새 창에서 열기
         contents_5.classList.remove('active');
         contents_6.classList.add('active');
 
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
-    } else if (/Android/i.test(navigator.userAgent)) {
+
+        alert("이미지를 길게 눌러 저장하세요😇");
+    } else if (isAndroid) {
         contents_5.classList.remove('active');
         contents_6.classList.add('active');
 
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
 
-        link.click(); // 데스크탑에서는 바로 다운로드
-    }
-    else {
-        link.click(); // 데스크탑에서는 바로 다운로드
+        try {
+            link.click(); // 다운로드 트리거 (Android에서 작동)
+        } catch (err) {
+            alert("이미지를 길게 눌러 저장하세요😇");
+        }
+    } else {
+        // 데스크탑 환경 - 바로 다운로드
+        link.click();
     }
 
     setTimeout(() => URL.revokeObjectURL(link.href), 1000);
@@ -335,8 +342,9 @@ function setBibleCard(userName) {
             downloadImg.style.color = fontColor;
             downloadImg.style.background = backGroundColor;
             
-            downloadCardText.style.paddingTop = '55%';
-            downloadCardText.style.paddingBottom = '5%';
+            downloadCardText.style.paddingTop = '50%';
+            // downloadCardText.style.paddingTop = '135px';
+            downloadCardText.style.paddingBottom = '15%';
             
             if (imgFile.includes("6-")) {
                 smallCardIcon.style.position = "absolute";
@@ -348,8 +356,11 @@ function setBibleCard(userName) {
                 smallCardIcon.style.objectPosition = "center"; 
 
                 downloadBackImg.style.position = "absolute";
-                downloadBackImg.style.width = window.innerWidth + "px";
-                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.transform = "rotate(11.74deg)";
+                downloadBackImg.style.top = "-6%";
+                downloadBackImg.style.left = "-5%";
+                downloadBackImg.style.width = "604.11px";
+                downloadBackImg.style.height = "788.97";
                 downloadBackImg.style.objectFit = "center"; 
                 downloadBackImg.style.objectPosition = "center"; 
 
@@ -363,8 +374,11 @@ function setBibleCard(userName) {
                 smallCardIcon.style.objectPosition = "center";
 
                 downloadBackImg.style.position = "absolute";
-                downloadBackImg.style.width = window.innerWidth + "px";
-                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.left = "-60px";
+                downloadBackImg.style.top = "-50px";
+                downloadBackImg.style.width = "auto";
+                downloadBackImg.style.height = window.innerHeight + 120 + "px";
+                
                 downloadBackImg.style.objectFit = "center"; 
                 downloadBackImg.style.objectPosition = "center"; 
                 
@@ -378,8 +392,10 @@ function setBibleCard(userName) {
                 smallCardIcon.style.objectPosition = "center"; 
 
                 downloadBackImg.style.position = "absolute";
-                downloadBackImg.style.width = window.innerWidth + "px";
-                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.top = "-24px";
+                downloadBackImg.style.left = "-18px";
+                downloadBackImg.style.width = "auto";
+                downloadBackImg.style.height = window.innerHeight + 130 + "px";;
                 downloadBackImg.style.objectFit = "center"; 
                 downloadBackImg.style.objectPosition = "center"; 
 
@@ -393,8 +409,10 @@ function setBibleCard(userName) {
                 smallCardIcon.style.objectPosition = "center"; 
 
                 downloadBackImg.style.position = "absolute";
-                downloadBackImg.style.width = window.innerWidth + "px";
-                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.width = "auto";
+                downloadBackImg.style.height = window.innerHeight + 85 + "px";
+                downloadBackImg.style.top = "-38px";
+                downloadBackImg.style.left = "-38px";
                 downloadBackImg.style.objectFit = "center"; 
                 downloadBackImg.style.objectPosition = "center"; 
 
@@ -408,9 +426,10 @@ function setBibleCard(userName) {
                 smallCardIcon.style.objectPosition = "center"; 
 
                 downloadBackImg.style.position = "absolute";
-                downloadBackImg.style.top = "7%";
-                downloadBackImg.style.width = window.innerWidth + "px";
-                downloadBackImg.style.height = "auto";
+                downloadBackImg.style.top = "77px";
+                downloadBackImg.style.left = "23px";
+                downloadBackImg.style.width = "auto";
+                downloadBackImg.style.height = window.innerHeight + 39 + "px";;
                 downloadBackImg.style.objectFit = "center"; 
                 downloadBackImg.style.objectPosition = "center"; 
 
