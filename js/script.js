@@ -35,6 +35,7 @@ const cardImg = document.getElementById("cardImg");
 const reBtn = document.getElementById("reBtn");
 const downloadBtn = document.getElementById("downloadBtn");
 const cardText = document.getElementById("cardText");
+const cardTitle = document.getElementById("cardTitle");
 const cardBible = document.getElementById("cardBible");
 const cardFooter = document.getElementById("cardFooter");
 
@@ -42,6 +43,7 @@ const cardFooter = document.getElementById("cardFooter");
 const downloadImg = document.getElementById("downloadImg");
 const downloadBackImg = document.getElementById("downloadBackImg");
 const downloadCardName = document.getElementById("downloadCardName");
+const downloadCardTitle = document.getElementById("downloadCardTitle");
 const downloadCardBible = document.getElementById("downloadCardBible");
 const downloadCardFooter = document.getElementById("downloadCardFooter");
 const downloadCardText = document.getElementById("downloadCardText");
@@ -185,7 +187,7 @@ downloadBtn.addEventListener('click', async () => {
         
         link.target = '_blank'; // 새 창에서 열기
 
-        setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
+        // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 1000);
 
     } else if (isAndroid) {
         contents_5.classList.remove('active');
@@ -197,7 +199,7 @@ downloadBtn.addEventListener('click', async () => {
         try {
             setTimeout(() => link.click(), 50);
         } catch (err) {
-            setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
+            // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
         }
     } else {
         // 데스크탑 환경 - 바로 다운로드
@@ -299,6 +301,8 @@ function setBibleCard(userName) {
         downloadBackImg.style.cssText = '';
         cardText.style.cssText = '';
         downloadCardText.style.cssText = '';
+        cardBible.style.cssText = '';
+        downloadCardBible.style.cssText = '';
 
         cardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
         cardBible.innerHTML = bibleContents;
@@ -307,7 +311,11 @@ function setBibleCard(userName) {
         downloadCardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
         downloadCardBible.innerHTML = bibleContents;
         downloadCardFooter.innerHTML = bibleLoc;
+
         if (fontType.isType2Layout) {// Logo top 112 bottum 45
+
+            cardBible.style.marginBottom = "5%";
+            downloadCardBible.style.marginTop = "10%";
 
             cardImg.style.color = fontColor;
             cardImg.style.background = backGroundColor;
@@ -331,6 +339,9 @@ function setBibleCard(userName) {
             downloadCardText.style.paddingTop = '200px';
 
         } else { // Logo top 40 bottum 60
+
+            cardBible.style.marginBottom = "5%";
+            downloadCardBible.style.marginTop = "13%";
 
             cardImg.style.color = fontColor;
             cardImg.style.background = backGroundColor;
