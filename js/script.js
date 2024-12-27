@@ -166,22 +166,22 @@ downloadBtn.addEventListener('click', async () => {
     contents_4.classList.remove('active');
     contents_5.classList.add('active');
 
-    const canvas = await html2canvas(downloadImg, {
+    let canvas = await html2canvas(downloadImg, {
             useCORS: true, 
-            scale: 1, // 해상도 조정
+            //scale: 1, // 해상도 조정
             allowTaint: false, 
     });
-    const imageData = canvas.toDataURL("image/png");
+    let imageData = canvas.toDataURL("image/png");
 
-    const link = document.createElement("a");
+    let link = document.createElement("a");
     link.href = imageData;
     link.download = `말씀카드_${nameInput.value}.png`;
 
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const isAndroid = /Android/i.test(navigator.userAgent);
+    let isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    let isAndroid = /Android/i.test(navigator.userAgent);
 
-    const resultImg = document.getElementById("resultImg");
-        resultImg.src = imageData;
+    let resultImg = document.getElementById("resultImg");
+    resultImg.src = imageData;
 
     if (isIOS) {
         
