@@ -128,7 +128,7 @@ btn_2.addEventListener('click', () => {
             contents_3.classList.remove('active');
             contents_4.classList.add('active');
             clearInterval(changeImgLog);
-        }, 4000); 
+        }, 100); 
     }
 })
 
@@ -165,7 +165,7 @@ reBtn.addEventListener('click', () => {
 
         clearInterval(changeImgLog);
 
-    }, 4000); 
+    }, 100); 
     
 })
 
