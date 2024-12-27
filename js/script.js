@@ -184,7 +184,7 @@ downloadBtn.addEventListener('click', async () => {
         // contents_5.classList.remove('active');
         // contents_6.classList.add('active');
         
-        link.target = '_blank'; // 새 창에서 열기
+        // link.target = '_blank'; // 새 창에서 열기
 
         // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 1000);
 
