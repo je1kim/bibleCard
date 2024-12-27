@@ -166,16 +166,14 @@ downloadBtn.addEventListener('click', () => {
     contents_4.classList.remove('active');
     contents_5.classList.add('active');
 
-    let canvas = html2canvas(downloadImg, {
-            useCORS: true, 
-            //scale: 1, // 해상도 조정
-            allowTaint: false, 
-    });
-    let imageData = canvas.toDataURL("image/png");
+    setTimeout (() => {
+        let canvas = html2canvas(downloadImg);
+        let imageData = canvas.toDataURL("image/png");
 
-    let link = document.createElement("a");
-    link.href = imageData;
-    link.download = `말씀카드_${nameInput.value}.png`;
+        let link = document.createElement("a");
+        link.href = imageData;
+        link.download = `말씀카드_${nameInput.value}.png`;
+    }, 2000)
 
     let isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
     let isAndroid = /Android/i.test(navigator.userAgent);
@@ -187,8 +185,7 @@ downloadBtn.addEventListener('click', () => {
         contents_5.classList.remove('active');
         contents_6.classList.add('active');
         
-        // link.target = '_blank'; // 새 창에서 열기
-        // link.click();
+        link.target = '_blank'; // 새 창에서 열기
 
         // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 1000);
 
@@ -205,7 +202,7 @@ downloadBtn.addEventListener('click', () => {
         link.click();
     }
 
-    setTimeout(() => URL.revokeObjectURL(link.href), 5000);
+    //setTimeout(() => URL.revokeObjectURL(link.href), 5000);
 })
 
 nameInput.addEventListener('input', () => {
