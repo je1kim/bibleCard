@@ -136,6 +136,14 @@ btn_2.addEventListener('click', () => {
 reBtn.addEventListener('click', () => {
     reBtn.classList.add("clicked");
 
+    smallCardIcon.src = '';
+    smallCardIcon.style.cssText = '';
+    downloadBackImg.style.cssText = '';
+    cardText.style.cssText = '';
+    downloadCardText.style.cssText = '';
+    cardBible.style.cssText = '';
+    downloadCardBible.style.cssText = '';
+
     const name = nameInput.value;
     loadingText.textContent = `${name}에게`; 
 
@@ -183,48 +191,48 @@ async function waitForRendering(element) {
     contents_5.classList.add('active');
 
     // html2canvas를 사용해 요소 캡처
-    // try {
-    //     const canvas = await html2canvas(downloadImg); // 비동기 처리
-    //     const imageData = canvas.toDataURL("image/png"); // 캡처된 이미지를 데이터 URL로 변환
+    try {
+        const canvas = await html2canvas(downloadImg); // 비동기 처리
+        const imageData = canvas.toDataURL("image/png"); // 캡처된 이미지를 데이터 URL로 변환
 
-    //     // 결과 이미지 미리보기
-    //     const resultImg = document.getElementById("resultImg");
-    //     resultImg.src = imageData;
+        // 결과 이미지 미리보기
+        const resultImg = document.getElementById("resultImg");
+        resultImg.src = imageData;
 
-    //     // 다운로드용 링크 생성
-    //     const link = document.createElement("a");
-    //     link.href = imageData;
-    //     link.download = `말씀카드_${nameInput.value}.png`; // 파일명 설정
+        // 다운로드용 링크 생성
+        const link = document.createElement("a");
+        link.href = imageData;
+        link.download = `말씀카드_${nameInput.value}.png`; // 파일명 설정
 
-    //     // 사용자 환경 감지
-    //     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    //     const isAndroid = /Android/i.test(navigator.userAgent);
+        // 사용자 환경 감지
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const isAndroid = /Android/i.test(navigator.userAgent);
 
-    //     if (isIOS) {
-    //         contents_5.classList.remove('active');
-    //         contents_6.classList.add('active');
-    //         link.target = '_blank'; // 새 창에서 열기
-    //         // alert("이미지를 길게 눌러 저장하세요😇");
-    //     } else if (isAndroid) {
-    //         contents_5.classList.remove('active');
-    //         contents_6.classList.add('active');
-    //         try {
-    //             setTimeout(() => link.click(), 50); // 다운로드 시도
-    //         } catch (err) {
-    //             // alert("이미지를 길게 눌러 저장하세요😇");
-    //         }
-    //     } else {
-    //         // 데스크톱 환경에서는 바로 다운로드
-    //         link.click();
-    //     }
+        if (isIOS) {
+            contents_5.classList.remove('active');
+            contents_6.classList.add('active');
+            link.target = '_blank'; // 새 창에서 열기
+            // alert("이미지를 길게 눌러 저장하세요😇");
+        } else if (isAndroid) {
+            contents_5.classList.remove('active');
+            contents_6.classList.add('active');
+            try {
+                setTimeout(() => link.click(), 50); // 다운로드 시도
+            } catch (err) {
+                // alert("이미지를 길게 눌러 저장하세요😇");
+            }
+        } else {
+            // 데스크톱 환경에서는 바로 다운로드
+            link.click();
+        }
 
-    //     // 메모리 누수를 방지하기 위해 URL 해제
-    //     setTimeout(() => URL.revokeObjectURL(link.href), 5000);
+        // 메모리 누수를 방지하기 위해 URL 해제
+        setTimeout(() => URL.revokeObjectURL(link.href), 5000);
 
-    // } catch (err) {
-    //     console.error("캡처 또는 다운로드 실패:", err);
-    //     alert("캡처 중 문제가 발생했습니다. 다시 시도해주세요.");
-    // }
+    } catch (err) {
+        console.error("캡처 또는 다운로드 실패:", err);
+        alert("캡처 중 문제가 발생했습니다. 다시 시도해주세요.");
+    }
 });
 
 nameInput.addEventListener('input', () => {
@@ -314,13 +322,13 @@ function setBibleCard(userName) {
         let bibleContents = result.bible.content.replaceAll("/", "<br>");
         let bibleLoc = result.bible.location ;
 
-        smallCardIcon.src = '';
-        smallCardIcon.style.cssText = '';
-        downloadBackImg.style.cssText = '';
-        cardText.style.cssText = '';
-        downloadCardText.style.cssText = '';
-        cardBible.style.cssText = '';
-        downloadCardBible.style.cssText = '';
+        // smallCardIcon.src = '';
+        // smallCardIcon.style.cssText = '';
+        // downloadBackImg.style.cssText = '';
+        // cardText.style.cssText = '';
+        // downloadCardText.style.cssText = '';
+        // cardBible.style.cssText = '';
+        // downloadCardBible.style.cssText = '';
 
         cardName.innerHTML = `2025<br>${userName}에게 주신 말씀`;
         cardBible.innerHTML = bibleContents;
@@ -393,7 +401,8 @@ function setBibleCard(userName) {
                 downloadBackImg.style.left = "-5%";
                 downloadBackImg.style.width = "604.11px";
                 downloadBackImg.style.height = "788.97";
-                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectFit = "fill"; 
+                // downloadBackImg.style.objectFit = "center";
                 downloadBackImg.style.objectPosition = "center"; 
 
             } else if (imgFile.includes("7-")) {
@@ -410,8 +419,8 @@ function setBibleCard(userName) {
                 downloadBackImg.style.top = "-50px";
                 downloadBackImg.style.width = "auto";
                 downloadBackImg.style.height = window.innerHeight + 120 + "px";
-                
-                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectFit = "fill"; 
+                // downloadBackImg.style.objectFit = "center";
                 downloadBackImg.style.objectPosition = "center"; 
                 
             } else if (imgFile.includes("8-")) {
@@ -428,7 +437,8 @@ function setBibleCard(userName) {
                 downloadBackImg.style.left = "-18px";
                 downloadBackImg.style.width = "auto";
                 downloadBackImg.style.height = window.innerHeight + 130 + "px";;
-                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectFit = "fill"; 
+                // downloadBackImg.style.objectFit = "center";
                 downloadBackImg.style.objectPosition = "center"; 
 
             } else if (imgFile.includes("9-")) {
@@ -445,7 +455,8 @@ function setBibleCard(userName) {
                 downloadBackImg.style.height = window.innerHeight + 85 + "px";
                 downloadBackImg.style.top = "-38px";
                 downloadBackImg.style.left = "-38px";
-                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectFit = "fill"; 
+                // downloadBackImg.style.objectFit = "center";
                 downloadBackImg.style.objectPosition = "center"; 
 
             } else if (imgFile.includes("10-")) {
@@ -462,7 +473,8 @@ function setBibleCard(userName) {
                 downloadBackImg.style.left = "23px";
                 downloadBackImg.style.width = "auto";
                 downloadBackImg.style.height = window.innerHeight + 39 + "px";;
-                downloadBackImg.style.objectFit = "center"; 
+                downloadBackImg.style.objectFit = "fill"; 
+                // downloadBackImg.style.objectFit = "center";
                 downloadBackImg.style.objectPosition = "center"; 
 
             }
