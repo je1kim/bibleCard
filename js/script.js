@@ -197,7 +197,7 @@ downloadBtn.addEventListener('click', async () => {
     await waitForImagesLoaded(downloadImg);
 
     try {
-        const canvas = await html2canvas(downloadImg, { useCORS: true, scale: 0.5});
+        const canvas = await html2canvas(downloadImg, { useCORS: true});
         const imageData = canvas.toDataURL("image/png");
 
         // 결과 이미지 미리보기
