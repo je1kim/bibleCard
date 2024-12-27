@@ -313,10 +313,11 @@ function setBibleCard(userName) {
             downloadBackImg.style.marginTop = "20%"
             downloadBackImg.style.width = "60px"
             downloadBackImg.style.height = "60px"
-            downloadCardText.style.height = '80%'
+            downloadCardText.style.height = '75%'
             downloadCardText.style.paddingTop = '40%';
 
         } else { // Set the large card 
+
             cardImg.style.color = fontColor;
             cardImg.style.background = backGroundColor;
             
