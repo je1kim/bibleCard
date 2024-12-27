@@ -128,7 +128,7 @@ btn_2.addEventListener('click', () => {
             contents_3.classList.remove('active');
             contents_4.classList.add('active');
             clearInterval(changeImgLog);
-        }, 100); 
+        }, 1000); 
     }
 })
 
@@ -165,35 +165,40 @@ reBtn.addEventListener('click', () => {
 
         clearInterval(changeImgLog);
 
-    }, 100); 
+    }, 1000); 
     
 })
 
-async function waitForRendering(element) {
-    return new Promise((resolve) => {
-      const checkRender = () => {
-        const { width, height } = element.getBoundingClientRect();
-        if (width > 0 && height > 0) {
-          // 요소가 렌더링 완료됨
-          resolve();
-        } else {
-          // 렌더링이 끝날 때까지 다음 프레임을 기다림
-          requestAnimationFrame(checkRender);
-        }
-      };
-      checkRender();
+async function waitForImagesLoaded(container) {
+    const images = container.querySelectorAll('img');
+    const promises = Array.from(images).map((img) => {
+        return new Promise((resolve) => {
+            if (img.complete) {
+                resolve();
+            } else {
+                img.onload = resolve;
+                img.onerror = resolve;
+            }
+        });
     });
-  }
+    await Promise.all(promises);
+}
 
-  downloadBtn.addEventListener('click', async () => { 
+
+  
+downloadBtn.addEventListener('click', async () => { 
     // UI 업데이트 (화면 전환)
     contents_4.classList.remove('active');
     contents_5.classList.add('active');
 
     // html2canvas를 사용해 요소 캡처
+    // const canvas = await html2canvas(downloadImg); // 비동기 처리
+    // const imageData = canvas.toDataURL("image/png"); // 캡처된 이미지를 데이터 URL로 변환
+    await waitForImagesLoaded(downloadImg);
+
     try {
-        const canvas = await html2canvas(downloadImg); // 비동기 처리
-        const imageData = canvas.toDataURL("image/png"); // 캡처된 이미지를 데이터 URL로 변환
+        const canvas = await html2canvas(downloadImg, { useCORS: true });
+        const imageData = canvas.toDataURL("image/png");
 
         // 결과 이미지 미리보기
         const resultImg = document.getElementById("resultImg");
@@ -225,14 +230,12 @@ async function waitForRendering(element) {
             // 데스크톱 환경에서는 바로 다운로드
             link.click();
         }
-
-        // 메모리 누수를 방지하기 위해 URL 해제
-        setTimeout(() => URL.revokeObjectURL(link.href), 5000);
-
     } catch (err) {
-        console.error("캡처 또는 다운로드 실패:", err);
-        alert("캡처 중 문제가 발생했습니다. 다시 시도해주세요.");
+        console.error("캡처 실패:", err);
     }
+
+    // 메모리 누수를 방지하기 위해 URL 해제
+    setTimeout(() => URL.revokeObjectURL(link.href), 5000);
 });
 
 nameInput.addEventListener('input', () => {
