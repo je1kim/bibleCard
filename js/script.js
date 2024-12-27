@@ -167,12 +167,11 @@ downloadBtn.addEventListener('click', async () => {
     contents_5.classList.add('active');
 
     const canvas = await html2canvas(downloadImg);
-
     const imageData = canvas.toDataURL("image/png");
 
     const link = document.createElement("a");
     link.href = imageData;
-    link.download = '말씀카드_'+nameInput.value+'.png';
+    link.download = `말씀카드_{nameInput.value}.png`;
 
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
     const isAndroid = /Android/i.test(navigator.userAgent);
@@ -183,8 +182,8 @@ downloadBtn.addEventListener('click', async () => {
             const resultImg = document.getElementById("resultImg");
             resultImg.src = imageData;
     
-            contents_5.classList.remove('active');
-            contents_6.classList.add('active');
+            // contents_5.classList.remove('active');
+            // contents_6.classList.add('active');
             
             link.target = '_blank'; // 새 창에서 열기
     
@@ -194,8 +193,8 @@ downloadBtn.addEventListener('click', async () => {
             const resultImg = document.getElementById("resultImg");
             resultImg.src = imageData;
     
-            contents_5.classList.remove('active');
-            contents_6.classList.add('active');
+            // contents_5.classList.remove('active');
+            // contents_6.classList.add('active');
     
             try {
                 setTimeout(() => link.click(), 50);
@@ -203,7 +202,6 @@ downloadBtn.addEventListener('click', async () => {
                 // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
             }
         } else {
-    
             link.click();
         }
     }, 500);
