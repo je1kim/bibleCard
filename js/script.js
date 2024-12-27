@@ -181,8 +181,8 @@ downloadBtn.addEventListener('click', async () => {
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
 
-        // contents_5.classList.remove('active');
-        // contents_6.classList.add('active');
+        contents_5.classList.remove('active');
+        contents_6.classList.add('active');
         
         // link.target = '_blank'; // 새 창에서 열기
 
@@ -192,8 +192,8 @@ downloadBtn.addEventListener('click', async () => {
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
 
-        // contents_5.classList.remove('active');
-        // contents_6.classList.add('active');
+        contents_5.classList.remove('active');
+        contents_6.classList.add('active');
 
         try {
             setTimeout(() => link.click(), 50);
