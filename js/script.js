@@ -128,21 +128,13 @@ btn_2.addEventListener('click', () => {
             contents_3.classList.remove('active');
             contents_4.classList.add('active');
             clearInterval(changeImgLog);
-        }, 1000); 
+        }, 4000); 
     }
 })
 
 // 말씀 다시 뽑기 이벤트
 reBtn.addEventListener('click', () => {
     reBtn.classList.add("clicked");
-
-    smallCardIcon.src = '';
-    smallCardIcon.style.cssText = '';
-    downloadBackImg.style.cssText = '';
-    cardText.style.cssText = '';
-    downloadCardText.style.cssText = '';
-    cardBible.style.cssText = '';
-    downloadCardBible.style.cssText = '';
 
     const name = nameInput.value;
     loadingText.textContent = `${name}에게`; 
@@ -158,6 +150,14 @@ reBtn.addEventListener('click', () => {
     setTimeout(() => {  // 3초 후 이미지 다운로드 페이지로 전환
         reBtn.classList.remove("clicked");
 
+        smallCardIcon.src = '';
+        smallCardIcon.style.cssText = '';
+        downloadBackImg.style.cssText = '';
+        cardText.style.cssText = '';
+        downloadCardText.style.cssText = '';
+        cardBible.style.cssText = '';
+        downloadCardBible.style.cssText = '';
+
         setBibleCard(name);
         
         contents_3.classList.remove('active');
@@ -165,36 +165,14 @@ reBtn.addEventListener('click', () => {
 
         clearInterval(changeImgLog);
 
-    }, 1000); 
+    }, 4000); 
     
 })
-
-async function waitForImagesLoaded(container) {
-    const images = container.querySelectorAll('img');
-    const promises = Array.from(images).map((img) => {
-        return new Promise((resolve) => {
-            if (img.complete) {
-                resolve();
-            } else {
-                img.onload = resolve;
-                img.onerror = resolve;
-            }
-        });
-    });
-    await Promise.all(promises);
-}
-
-
   
 downloadBtn.addEventListener('click', async () => { 
     // UI 업데이트 (화면 전환)
     contents_4.classList.remove('active');
     contents_5.classList.add('active');
-
-    // html2canvas를 사용해 요소 캡처
-    // const canvas = await html2canvas(downloadImg); // 비동기 처리
-    // const imageData = canvas.toDataURL("image/png"); // 캡처된 이미지를 데이터 URL로 변환
-    await waitForImagesLoaded(downloadImg);
 
     try {
         const canvas = await html2canvas(downloadImg, { useCORS: true});
