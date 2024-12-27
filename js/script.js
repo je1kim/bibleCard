@@ -166,7 +166,11 @@ downloadBtn.addEventListener('click', async () => {
     contents_4.classList.remove('active');
     contents_5.classList.add('active');
 
-    const canvas = await html2canvas(downloadImg);
+    const canvas = await html2canvas(downloadImg, {
+            useCORS: true, 
+            scale: 1, // 해상도 조정
+            allowTaint: false, 
+    });
     const imageData = canvas.toDataURL("image/png");
 
     const link = document.createElement("a");
@@ -176,11 +180,11 @@ downloadBtn.addEventListener('click', async () => {
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
     const isAndroid = /Android/i.test(navigator.userAgent);
 
-    if (isIOS) {
-    
-        const resultImg = document.getElementById("resultImg");
+    const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
 
+    if (isIOS) {
+        
         contents_5.classList.remove('active');
         contents_6.classList.add('active');
         
@@ -190,9 +194,6 @@ downloadBtn.addEventListener('click', async () => {
         // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 1000);
 
     } else if (isAndroid) {
-        const resultImg = document.getElementById("resultImg");
-        resultImg.src = imageData;
-
         contents_5.classList.remove('active');
         contents_6.classList.add('active');
 
