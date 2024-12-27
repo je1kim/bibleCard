@@ -177,36 +177,38 @@ downloadBtn.addEventListener('click', async () => {
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
     const isAndroid = /Android/i.test(navigator.userAgent);
 
-    if (isIOS) {
+    setTimeout (() => {
+        if (isIOS) {
         
-        const resultImg = document.getElementById("resultImg");
-        resultImg.src = imageData;
-
-        contents_5.classList.remove('active');
-        contents_6.classList.add('active');
-        
-        link.target = '_blank'; // 새 창에서 열기
-
-        // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 1000);
-
-    } else if (isAndroid) {
-        const resultImg = document.getElementById("resultImg");
-        resultImg.src = imageData;
-
-        contents_5.classList.remove('active');
-        contents_6.classList.add('active');
-
-        try {
-            setTimeout(() => link.click(), 50);
-        } catch (err) {
-            // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
+            const resultImg = document.getElementById("resultImg");
+            resultImg.src = imageData;
+    
+            contents_5.classList.remove('active');
+            contents_6.classList.add('active');
+            
+            link.target = '_blank'; // 새 창에서 열기
+    
+            // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 1000);
+    
+        } else if (isAndroid) {
+            const resultImg = document.getElementById("resultImg");
+            resultImg.src = imageData;
+    
+            contents_5.classList.remove('active');
+            contents_6.classList.add('active');
+    
+            try {
+                setTimeout(() => link.click(), 50);
+            } catch (err) {
+                // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
+            }
+        } else {
+    
+            link.click();
         }
-    } else {
+    }, 500);
 
-        link.click();
-    }
-
-    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    setTimeout(() => URL.revokeObjectURL(link.href), 5000);
 })
 
 nameInput.addEventListener('input', () => {
