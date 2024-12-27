@@ -163,6 +163,9 @@ reBtn.addEventListener('click', () => {
 
 // 최종 말씀 카트 다운로드 클릭 이벤트
 downloadBtn.addEventListener('click', async () => { 
+    contents_4.classList.remove('active');
+    contents_5.classList.add('active');
+
     const canvas = await html2canvas(downloadImg);
 
     const imageData = canvas.toDataURL("image/png");
@@ -179,9 +182,6 @@ downloadBtn.addEventListener('click', async () => {
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
 
-        contents_4.classList.remove('active');
-        contents_5.classList.add('active');
-
         contents_5.classList.remove('active');
         contents_6.classList.add('active');
         
@@ -193,9 +193,6 @@ downloadBtn.addEventListener('click', async () => {
         const resultImg = document.getElementById("resultImg");
         resultImg.src = imageData;
 
-        contents_4.classList.remove('active');
-        contents_5.classList.add('active');
-
         contents_5.classList.remove('active');
         contents_6.classList.add('active');
 
@@ -205,11 +202,6 @@ downloadBtn.addEventListener('click', async () => {
             // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
         }
     } else {
-        contents_4.classList.remove('active');
-        contents_5.classList.add('active');
-
-        contents_5.classList.remove('active');
-        contents_6.classList.add('active');
 
         link.click();
     }
