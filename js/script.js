@@ -171,7 +171,7 @@ downloadBtn.addEventListener('click', async () => {
 
     const link = document.createElement("a");
     link.href = imageData;
-    link.download = `말씀카드_{nameInput.value}.png`;
+    link.download = `말씀카드_${nameInput.value}.png`;
 
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
     const isAndroid = /Android/i.test(navigator.userAgent);
