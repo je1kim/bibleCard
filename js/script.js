@@ -161,49 +161,71 @@ reBtn.addEventListener('click', () => {
     
 })
 
-// 최종 말씀 카트 다운로드 클릭 이벤트
-downloadBtn.addEventListener('click', () => { 
+async function waitForRendering(element) {
+    return new Promise((resolve) => {
+      const checkRender = () => {
+        const { width, height } = element.getBoundingClientRect();
+        if (width > 0 && height > 0) {
+          // 요소가 렌더링 완료됨
+          resolve();
+        } else {
+          // 렌더링이 끝날 때까지 다음 프레임을 기다림
+          requestAnimationFrame(checkRender);
+        }
+      };
+      checkRender();
+    });
+  }
+
+  downloadBtn.addEventListener('click', async () => { 
+    // UI 업데이트 (화면 전환)
     contents_4.classList.remove('active');
     contents_5.classList.add('active');
 
-    setTimeout (() => {
-        let canvas = html2canvas(downloadImg);
-        let imageData = canvas.toDataURL("image/png");
+    // html2canvas를 사용해 요소 캡처
+    try {
+        const canvas = await html2canvas(downloadImg); // 비동기 처리
+        const imageData = canvas.toDataURL("image/png"); // 캡처된 이미지를 데이터 URL로 변환
 
-        let link = document.createElement("a");
+        // 결과 이미지 미리보기
+        const resultImg = document.getElementById("resultImg");
+        resultImg.src = imageData;
+
+        // 다운로드용 링크 생성
+        const link = document.createElement("a");
         link.href = imageData;
-        link.download = `말씀카드_${nameInput.value}.png`;
-    }, 2000)
+        link.download = `말씀카드_${nameInput.value}.png`; // 파일명 설정
 
-    let isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    let isAndroid = /Android/i.test(navigator.userAgent);
+        // 사용자 환경 감지
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const isAndroid = /Android/i.test(navigator.userAgent);
 
-    let resultImg = document.getElementById("resultImg");
-    resultImg.src = imageData;
-
-    if (isIOS) {
-        contents_5.classList.remove('active');
-        contents_6.classList.add('active');
-        
-        link.target = '_blank'; // 새 창에서 열기
-
-        // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 1000);
-
-    } else if (isAndroid) {
-        contents_5.classList.remove('active');
-        contents_6.classList.add('active');
-
-        try {
-            setTimeout(() => link.click(), 50);
-        } catch (err) {
-            // setTimeout(() => alert("이미지를 길게 눌러 저장하세요😇"), 50);
+        if (isIOS) {
+            contents_5.classList.remove('active');
+            contents_6.classList.add('active');
+            link.target = '_blank'; // 새 창에서 열기
+            // alert("이미지를 길게 눌러 저장하세요😇");
+        } else if (isAndroid) {
+            contents_5.classList.remove('active');
+            contents_6.classList.add('active');
+            try {
+                setTimeout(() => link.click(), 50); // 다운로드 시도
+            } catch (err) {
+                // alert("이미지를 길게 눌러 저장하세요😇");
+            }
+        } else {
+            // 데스크톱 환경에서는 바로 다운로드
+            link.click();
         }
-    } else {
-        link.click();
-    }
 
-    //setTimeout(() => URL.revokeObjectURL(link.href), 5000);
-})
+        // 메모리 누수를 방지하기 위해 URL 해제
+        setTimeout(() => URL.revokeObjectURL(link.href), 5000);
+
+    } catch (err) {
+        console.error("캡처 또는 다운로드 실패:", err);
+        alert("캡처 중 문제가 발생했습니다. 다시 시도해주세요.");
+    }
+});
 
 nameInput.addEventListener('input', () => {
     
