@@ -32,7 +32,7 @@
 
 ## Stack
 - **Design**: Figma
-- **Language**: Html5, Css3, Javascript
+- **Language**: HTML5, CSS3, Javascript
 - **Deploy**: Docker
 
 ## :open_file_folder: Project Structure
