@@ -1,2 +1,3 @@
-bak/
 .DS*
+.vscode
+container.sh
