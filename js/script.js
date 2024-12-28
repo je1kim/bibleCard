@@ -331,8 +331,8 @@ function setBibleCard(userName) {
             downloadImg.style.color = fontColor;
             downloadImg.style.background = backGroundColor;
             
-            downloadCardText.style.height = '75%'
             downloadCardText.style.paddingTop = '40%';
+            downloadCardText.style.paddingBottom = '7%';
             
             if (imgFile.includes("6-")) {
                 smallCardIcon.style.position = "absolute";
