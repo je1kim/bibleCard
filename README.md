@@ -8,7 +8,7 @@
 > 부평감리교회 청년부 말씀 온라인 말씀 뽑기! ➡️ (http://bpmcyouth.ddns.net)
 
 
-## Description
+## 📖 Description
 부평감리교회 청년부에서 오프라인으로 진행했던 카드 뽑기를 온라인에서 뽑을 수 있도록 청년부 디자인팀에서 기획하였다.
 
 부평감리교회 청년부의 로고와 아이콘을 조화롭게 사용하여 이쁜 말씀 카드를 모바일에서 다운로드 할 수 있도록 개발 하였다.
@@ -17,7 +17,7 @@
 
 
 ## 🎨 디자인 기획
-### 화면 플로우
+####  화면 플로우
 <p float="left">
   <img src="images/demo/demo-1.png" style="height:406px;"/>
   <img src="images/demo/demo-2.png" style="height:406px;"/>
@@ -25,12 +25,12 @@
   <img src="images/demo/demo-4.png" style="height:406px;"/>
 </p>
 
-### 최종 다운로드 이미지
+#### 최종 다운로드 이미지
 <p>
   <img src="images/demo/demo-5.png" style="height:406px;"/>
 </p>
 
-## Stack
+## ⚒️ Stack
 - **Design**: Figma
 - **Language**: HTML5, CSS3, Javascript
 - **Deploy**: Docker
