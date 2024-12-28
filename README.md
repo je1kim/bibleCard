@@ -1,5 +1,9 @@
 # 2025 Bible Card 😇
 
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white)
+![code](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white)
+![code](https://img.shields.io/badge/CSS3-1572B6?style=flat&amp;logo=CSS3&amp;logoColor=white)
+![code](https://img.shields.io/badge/Javascript-F7DF1E?style=flat&logo=Javascript&logoColor=black)
 
 > 부평감리교회 청년부 말씀 온라인 말씀 뽑기! ➡️ (http://bpmcyouth.ddns.net)
 
@@ -13,9 +17,36 @@
 
 
 ## 🎨 디자인 기획
+### 화면 플로우
 <p float="left">
-  <img src="images/demo/demo-1.png" />
+  <img src="images/demo/demo-1.png" style="height:406px;"/>
+  <img src="images/demo/demo-2.png" style="height:406px;"/>
+  <img src="images/demo/demo-3.png" style="height:406px;"/>
+  <img src="images/demo/demo-4.png" style="height:406px;"/>
 </p>
 
+### 최종 다운로드 이미지
+<p>
+  <img src="images/demo/demo-5.png" style="height:406px;"/>
+</p>
 
-docker run -d -p 9876:80 -v ./bibleCard:/app/src --name bpmcWebServer bpmc-nginx:0.1
+## Stack
+- **Design**: Figma
+- **Language**: Html5, Css3, Javascript
+- **Deploy**: Docker
+
+## :open_file_folder: Project Structure
+```markdown
+bpmcBible
+├── css
+├── js
+├── data
+├── images
+│   ├── demo
+│   └── card
+└── index.html
+```
+
+## 🧑‍💻Developer👩‍💻
+*  **김제원** ([je1kim]([https://](https://github.com/je1kim)))
+*  **김예빈** ([yekong082]([https://](https://github.com/yekong812)))
