@@ -46,6 +46,9 @@ bpmcBible
 │   └── card
 └── index.html
 ```
+## 🧑‍🎨Designer👨‍🎨
+* **김세영**
+* **김찬미**
 
 ## 🧑‍💻Developer👩‍💻
 *  **김제원**([je1kim](https://github.com/je1kim))
