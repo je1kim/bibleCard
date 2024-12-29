@@ -48,5 +48,5 @@ bpmcBible
 ```
 
 ## 🧑‍💻Developer👩‍💻
-*  **김제원** ([je1kim]([https://](https://github.com/je1kim)))
-*  **김예빈** ([yekong082]([https://](https://github.com/yekong812)))
+*  **김제원**([je1kim](https://github.com/je1kim))
+*  **김예빈**([yekong812](https://github.com/yekong812))
